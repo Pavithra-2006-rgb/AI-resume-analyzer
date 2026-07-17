@@ -366,7 +366,7 @@ def rank_emoji(rank: int) -> str:
 # ─────────────────────────────────────────────
 #  SIDEBAR
 # ─────────────────────────────────────────────
-api_key = "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"
+api_key = "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"
 
 with st.sidebar:
     st.markdown("## 📤 Upload Resumes")
