@@ -368,22 +368,23 @@ def rank_emoji(rank: int) -> str:
 # ─────────────────────────────────────────────
 api_key = "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"
 
-with st.sidebar:
-    st.markdown("## 📤 Upload Resumes")
-    uploaded_files = st.file_uploader(
-        "Drop 3–5 PDF resumes here",
-        type=["pdf"],
-        accept_multiple_files=True,
+st.markdown("## 📤 Upload Resumes")
+
+uploaded_files = st.file_uploader(
+    "Drop 3–5 PDF resumes here",
+    type=["pdf"],
+    accept_multiple_files=True,
+)
+
+if uploaded_files:
+    count = len(uploaded_files)
+    color = "#48c78e" if 3 <= count <= 5 else "#ff6464"
+    st.markdown(
+        f"<p style='color:{color}; font-weight:600;'>"
+        f"{'✅' if 3<=count<=5 else '⚠️'} {count} file(s) "
+        f"{'(Ready!)' if 3<=count<=5 else '(Need 3–5 PDFs)'}</p>",
+        unsafe_allow_html=True
     )
-    if uploaded_files:
-        count = len(uploaded_files)
-        color = "#48c78e" if 3 <= count <= 5 else "#ff6464"
-        st.markdown(
-            f"<p style='color:{color}; font-weight:600;'>"
-            f"{'✅' if 3<=count<=5 else '⚠️'} {count} file(s) "
-            f"{'(Ready!)' if 3<=count<=5 else '(Need 3–5 PDFs)'}</p>",
-            unsafe_allow_html=True
-        )
         for f in uploaded_files:
             st.markdown(f"""
 <div style="background:linear-gradient(135deg,rgba(102,126,234,0.3),rgba(118,75,162,0.3));
